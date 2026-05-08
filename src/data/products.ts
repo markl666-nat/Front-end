@@ -49,7 +49,7 @@ export const products: Product[] = [
     description: 'Reliable melee fighter that cuts through the frontline.',
     priceEuro: 4,
     category: 'Cat Units',
-    imageUrl: placeholder('Samurai Cat'),
+    imageUrl:'https://i.pinimg.com/1200x/15/c7/79/15c779cc8c32f871dbcf49a624a83d7c.jpg',  
   },
   {
     id: 'unit-006',
