@@ -988,3 +988,84 @@
   cursor: pointer;
 }
 .add-to-cart-btn:hover { background: #e85d2e; }
+/* ============== CART PAGE ============== */
+.cart-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.cart-title {
+  font-size: 32px;
+  margin: 0 0 24px 0;
+}
+.cart-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #889;
+}
+.cart-empty-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 24px;
+  background: #ff6b35;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.cart-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+.cart-row-img {
+  width: 80px; height: 80px; object-fit: cover; border-radius: 6px;
+}
+.cart-row-info { display: flex; flex-direction: column; gap: 4px; }
+.cart-row-meta { font-size: 12px; color: #889; }
+.cart-row-qty { display: flex; align-items: center; gap: 8px; }
+.cart-row-qty button {
+  width: 28px; height: 28px;
+  border: 1px solid #ccc; background: #fff; border-radius: 4px;
+  cursor: pointer; font-size: 16px;
+}
+.cart-row-price { font-weight: 600; min-width: 80px; text-align: right; }
+.cart-row-remove {
+  background: none; border: none; font-size: 20px; cursor: pointer;
+  color: #c00; padding: 4px 10px;
+}
+.cart-summary {
+  padding: 20px;
+  background: #f7f7f7;
+  border-radius: 10px;
+}
+.cart-total {
+  display: flex; justify-content: space-between;
+  font-size: 22px; margin-bottom: 16px;
+}
+.cart-actions {
+  display: flex; gap: 12px; justify-content: flex-end;
+}
+.cart-clear-btn {
+  padding: 10px 20px;
+  background: #fff; border: 1px solid #ccc;
+  border-radius: 8px; cursor: pointer;
+}
+.cart-checkout-btn {
+  padding: 10px 24px;
+  background: #ff6b35; color: #fff;
+  border: none; border-radius: 8px;
+  font-weight: 600; cursor: pointer;
+}
+.cart-checkout-btn:hover { background: #e85d2e; }
