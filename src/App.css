@@ -909,3 +909,15 @@
   text-decoration: none;
 }
 .auth-switch a:hover { text-decoration: underline; }
+.catalog-page-header {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+.catalog-page-header h1 {
+  font-size: 36px;
+  margin: 0 0 8px 0;
+}
+.catalog-page-header p {
+  color: #889;
+  font-size: 16px;
+}
