@@ -9,11 +9,17 @@ import { CatalogSection } from '../sections/CatalogSection';
 import { FavoritesSection } from '../sections/FavoritesSection';
 import { AboutSection } from '../sections/AboutSection';
 
+// 1. Добавлен импорт хука корзины
+import { useCart } from '../context/CartContext';
+
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<'All' | ProductCategory>('All');
   const [query, setQuery] = useState('');
   const [likedIds, setLikedIds] = useState<Set<string>>(() => new Set());
-  const [cartIds, setCartIds] = useState<Set<string>>(() => new Set());
+  
+  // 2. Инициализация контекста корзины (cartIds удален)
+  const { cart: cartMap, toggleCart } = useCart();
+
   const [apiProducts, setApiProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -74,14 +80,7 @@ export default function HomePage() {
     });
   };
 
-  const toggleCart = (id: string) => {
-    setCartIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
+  // 3. Локальная функция toggleCart удалена, используется версия из useCart
 
   return (
     <>
@@ -103,7 +102,8 @@ export default function HomePage() {
         loading={loading}
         error={error}
         likedIds={likedIds}
-        cartIds={cartIds}
+        // 4. Передаем Set из ключей объекта корзины
+        cartIds={new Set(Object.keys(cartMap))}
         onToggleLike={toggleLike}
         onToggleCart={toggleCart}
       />

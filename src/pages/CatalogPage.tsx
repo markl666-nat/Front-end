@@ -4,16 +4,21 @@ import type { Product, ProductCategory } from '../types';
 import { fetchBattleItems } from '../api/battleCatsApi';
 import { CatalogSection } from '../sections/CatalogSection';
 
+// 1. Импортируем хук контекста
+import { useCart } from '../context/CartContext';
+
 /**
  * Полноценная страница каталога — без Hero/About,
  * с расширенными возможностями фильтрации.
- * Логика загрузки идентична HomePage, но это отдельная страница.
  */
 export default function CatalogPage() {
   const [activeTab, setActiveTab] = useState<'All' | ProductCategory>('All');
   const [query, setQuery] = useState('');
   const [likedIds, setLikedIds] = useState<Set<string>>(() => new Set());
-  const [cartIds, setCartIds] = useState<Set<string>>(() => new Set());
+  
+  // 2. Инициализируем контекст (cartIds и локальный toggleCart удалены)
+  const { cart: cartMap, isInCart, toggleCart } = useCart();
+
   const [apiProducts, setApiProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -64,15 +69,6 @@ export default function CatalogPage() {
     });
   };
 
-  const toggleCart = (id: string) => {
-    setCartIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
-
   return (
     <div className="catalog-page">
       <div className="catalog-page-header">
@@ -88,7 +84,8 @@ export default function CatalogPage() {
         loading={loading}
         error={error}
         likedIds={likedIds}
-        cartIds={cartIds}
+        // 3. Передаем Set, созданный из ключей объекта корзины
+        cartIds={new Set(Object.keys(cartMap))}
         onToggleLike={toggleLike}
         onToggleCart={toggleCart}
       />
