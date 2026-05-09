@@ -791,3 +791,21 @@
   background: #7a3040;
 }
 .admin-row-actions button:disabled { opacity: 0.5; cursor: not-allowed; }
+/* ============== PAGE STUB ============== */
+.page-stub {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+.page-stub h1 {
+  font-size: 36px;
+  margin: 0 0 12px 0;
+}
+.page-stub p {
+  color: #889;
+  font-size: 16px;
+}
