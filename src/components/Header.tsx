@@ -1,91 +1,64 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LoginModal } from './LoginModal';
 import { RegisterModal } from './RegisterModal';
 
-type Props = {
-  filteredCount: number;
-  likedCount: number;
-  cartCount: number;
-  onGoToCatalog: () => void;
-  onGoToFavorites: () => void;
-  onGoToAbout: () => void;
-};
-
-export function Header({
-  filteredCount,
-  likedCount,
-  cartCount,
-  onGoToCatalog,
-  onGoToFavorites,
-  onGoToAbout,
-}: Props) {
+/**
+ * Header без props — теперь это глобальная навигация по сайту.
+ * Использует Link и useNavigate из react-router-dom вместо колбэков.
+ *
+ * Login и Sign Up остались как модалки — они быстрее чем переходить
+ * на отдельные страницы и сохраняют контекст текущей страницы.
+ * При желании можно перенаправлять на /login и /register через navigate.
+ */
+export function Header() {
   const { isAuthenticated, userName, userRole, logout } = useAuth();
   const [loginOpen, setLoginOpen] = useState(false);
-const [registerOpen, setRegisterOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <>
       <header className="header">
         <div className="header-inner">
-          <div className="brand">
+          <Link to="/" className="brand">
             <span className="brand-mark">🐾</span>
             <span className="brand-text">Cat Base Shop</span>
-          </div>
+          </Link>
 
           <nav className="nav">
-            <button onClick={onGoToCatalog} className="nav-link">
-              Catalog ({filteredCount})
-            </button>
-            <button onClick={onGoToFavorites} className="nav-link">
-              Favorites ({likedCount})
-            </button>
-            {(userRole === 'Admin' || userRole === 'Manager') && (
-              <button
-                onClick={() => {
-                  document
-                    .getElementById('admin')
-                    ?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="nav-link"
-              >
-                Admin 🛠
-              </button>
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/catalog" className="nav-link">Catalog</Link>
+            <Link to="/cart" className="nav-link">🛒 Cart</Link>
+            {isAuthenticated && (
+              <Link to="/profile" className="nav-link">Profile</Link>
             )}
-            <button onClick={onGoToAbout} className="nav-link">
-              About
-            </button>
-            <span className="nav-cart">🛒 {cartCount}</span>
+            {(userRole === 'Admin' || userRole === 'Manager') && (
+              <Link to="/admin" className="nav-link">Admin 🛠</Link>
+            )}
           </nav>
 
-          {/* Зона авторизации справа */}
           <div className="header-user">
             {isAuthenticated ? (
               <>
                 <span className="header-user-name">{userName}</span>
-                {userRole && (
-                  <span className="header-user-role">{userRole}</span>
-                )}
-                <button
-                  className="header-logout-btn"
-                  onClick={logout}
-                  title="Sign out"
-                >
+                {userRole && <span className="header-user-role">{userRole}</span>}
+                <button className="header-logout-btn" onClick={handleLogout} title="Sign out">
                   Logout
                 </button>
               </>
-          ) : (
+            ) : (
               <>
-                <button
-                  className="header-login-btn"
-                  onClick={() => setRegisterOpen(true)}
-                >
+                <button className="header-login-btn" onClick={() => setRegisterOpen(true)}>
                   Sign Up
                 </button>
-                <button
-                  className="header-login-btn"
-                  onClick={() => setLoginOpen(true)}
-                >
+                <button className="header-login-btn" onClick={() => setLoginOpen(true)}>
                   Login
                 </button>
               </>
@@ -94,7 +67,7 @@ const [registerOpen, setRegisterOpen] = useState(false);
         </div>
       </header>
 
-    <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
+      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
       <RegisterModal
         open={registerOpen}
         onClose={() => setRegisterOpen(false)}
