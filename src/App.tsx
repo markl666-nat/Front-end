@@ -45,10 +45,12 @@ export default function App() {
     return () => controller.abort();
   }, []);
 
-  const allProducts = useMemo(
-    () => [...products, ...apiProducts],
-    [apiProducts],
-  );
+ // В отличие от fakeStore-периода, теперь источник истины — наш бэк.
+// Mock data (products) оставлены как fallback для случая когда бэк недоступен.
+const allProducts = useMemo(
+  () => (apiProducts.length > 0 ? apiProducts : products),
+  [apiProducts],
+);
 
   const filtered = useMemo(() => {
     return allProducts.filter((p) => {
