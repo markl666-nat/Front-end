@@ -1174,12 +1174,13 @@
   align-items: center; justify-content: center;
   text-align: center; padding: 40px 20px;
 }
-.not-found-emoji { font-size: 80px; margin-bottom: 16px; }
-.not-found h1 { font-size: 36px; margin: 0 0 12px 0; }
-.not-found p { color: #889; margin: 4px 0; }
-.not-found-hint { font-style: italic; }
-.not-found-links {
-  display: flex; gap: 12px; margin-top: 32px;
+.not-found-video {
+  width: 320px;
+  max-width: 80%;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background: #000;
 }
 .not-found-btn {
   padding: 12px 24px;
