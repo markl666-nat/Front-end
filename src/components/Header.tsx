@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { LoginModal } from './LoginModal';
+import { RegisterModal } from './RegisterModal';
 
 type Props = {
   filteredCount: number;
@@ -21,6 +22,7 @@ export function Header({
 }: Props) {
   const { isAuthenticated, userName, userRole, logout } = useAuth();
   const [loginOpen, setLoginOpen] = useState(false);
+const [registerOpen, setRegisterOpen] = useState(false);
 
   return (
     <>
@@ -72,19 +74,32 @@ export function Header({
                   Logout
                 </button>
               </>
-            ) : (
-              <button
-                className="header-login-btn"
-                onClick={() => setLoginOpen(true)}
-              >
-                Login
-              </button>
+          ) : (
+              <>
+                <button
+                  className="header-login-btn"
+                  onClick={() => setRegisterOpen(true)}
+                >
+                  Sign Up
+                </button>
+                <button
+                  className="header-login-btn"
+                  onClick={() => setLoginOpen(true)}
+                >
+                  Login
+                </button>
+              </>
             )}
           </div>
         </div>
       </header>
 
-      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
+    <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
+      <RegisterModal
+        open={registerOpen}
+        onClose={() => setRegisterOpen(false)}
+        onSuccessSwitchToLogin={() => setLoginOpen(true)}
+      />
     </>
   );
 }
