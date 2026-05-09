@@ -1,4 +1,6 @@
-import type { ProductCategory } from '../types';
+import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { LoginModal } from './LoginModal';
 
 type Props = {
   filteredCount: number;
@@ -17,50 +19,60 @@ export function Header({
   onGoToFavorites,
   onGoToAbout,
 }: Props) {
+  const { isAuthenticated, userName, userRole, logout } = useAuth();
+  const [loginOpen, setLoginOpen] = useState(false);
+
   return (
-    <header className="header">
-      <div className="container header__row">
-        <div className="brand" role="banner">
-          <div className="brand__logo" aria-hidden="true">
-            <img
-              className="brand__logoImage"
-              src="https://i.pinimg.com/736x/50/06/b9/5006b9924e63e21ddbe352a60fc3ecb7.jpg"
-              alt="PONOS official logo"
-            />
+    <>
+      <header className="header">
+        <div className="header-inner">
+          <div className="brand">
+            <span className="brand-mark">🐾</span>
+            <span className="brand-text">Cat Base Shop</span>
           </div>
-          <div className="brand__text">
-            <div className="brand__title">ponos.official</div>
-            <div className="brand__subtitle">The Battle Cats</div>
+
+          <nav className="nav">
+            <button onClick={onGoToCatalog} className="nav-link">
+              Catalog ({filteredCount})
+            </button>
+            <button onClick={onGoToFavorites} className="nav-link">
+              Favorites ({likedCount})
+            </button>
+            <button onClick={onGoToAbout} className="nav-link">
+              About
+            </button>
+            <span className="nav-cart">🛒 {cartCount}</span>
+          </nav>
+
+          {/* Зона авторизации справа */}
+          <div className="header-user">
+            {isAuthenticated ? (
+              <>
+                <span className="header-user-name">{userName}</span>
+                {userRole && (
+                  <span className="header-user-role">{userRole}</span>
+                )}
+                <button
+                  className="header-logout-btn"
+                  onClick={logout}
+                  title="Sign out"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <button
+                className="header-login-btn"
+                onClick={() => setLoginOpen(true)}
+              >
+                Login
+              </button>
+            )}
           </div>
         </div>
+      </header>
 
-        <nav className="nav" aria-label="Main navigation">
-          <button className="nav__link" onClick={onGoToCatalog}>
-            Catalog
-          </button>
-          <button className="nav__link" onClick={onGoToFavorites}>
-            Favorites
-          </button>
-          <button className="nav__link" onClick={onGoToAbout}>
-            About
-          </button>
-        </nav>
-
-        <div className="header__stats" aria-label="Counters">
-          <div className="pill">
-            <span className="pill__label">Found</span>
-            <span className="pill__value">{filteredCount}</span>
-          </div>
-          <div className="pill">
-            <span className="pill__label">Favorites</span>
-            <span className="pill__value">{likedCount}</span>
-          </div>
-          <div className="pill">
-            <span className="pill__label">Cart</span>
-            <span className="pill__value">{cartCount}</span>
-          </div>
-        </div>
-      </div>
-    </header>
+      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
+    </>
   );
 }
