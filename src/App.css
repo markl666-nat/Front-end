@@ -629,7 +629,6 @@
 .header-user-name {
   font-weight: 600;
   font-size: 14px;
-  color: #fff;                  /* белый — для тёмного header */
 }
 
 .header-user-role {
@@ -640,26 +639,22 @@
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .header-login-btn,
 .header-logout-btn {
-  background: rgba(255, 255, 255, 0.1);   /* лёгкий полупрозрачный фон */
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
   padding: 6px 14px;
   border-radius: 6px;
   font-size: 13px;
-  font-weight: 500;
   cursor: pointer;
   transition: all 120ms;
 }
 .header-login-btn:hover,
 .header-logout-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
 }
 /* ============== ADMIN SECTION ============== */
 
@@ -1202,3 +1197,66 @@
   border-color: #ff6b35;
 }
 .not-found-btn.primary:hover { background: #e85d2e; color: #fff; }
+/* ============== HEADER VISIBILITY FIX ============== */
+/* Тёмный градиент Header — нужно сделать все ссылки и бренд белыми */
+
+.page > .header,
+header.header {
+  position: relative;
+  z-index: 10;
+}
+
+/* Бренд (Cat Base Shop) */
+.header .brand,
+.header .brand-text {
+  color: #fff !important;
+  text-decoration: none;
+}
+.header .brand-mark {
+  color: #fff;
+}
+
+/* Навигация: Home / Catalog / Cart / Profile / Admin */
+.header .nav-link,
+.header a.nav-link,
+.header button.nav-link {
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 120ms;
+}
+.header .nav-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Активная ссылка (когда на этой странице) — выделение */
+.header .nav-link.active {
+  background: rgba(255, 107, 53, 0.25);
+  color: #fff !important;
+}
+
+/* Имя пользователя в правом углу */
+.header-user-name {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+/* Кнопки Login / Sign Up / Logout — на тёмном фоне */
+.header-login-btn,
+.header-logout-btn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+.header-login-btn:hover,
+.header-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Бейдж роли — оставляем оранжевый, добавляем тонкую обводку */
+.header-user-role {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+}

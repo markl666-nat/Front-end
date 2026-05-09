@@ -45,7 +45,7 @@ export function ProductCard({
         <p className="cardProduct__desc">{product.description}</p>
 
         <div className="cardProduct__footer">
-          <div className="price">{product.priceEuro.toLocaleString('ru-RU')} ₽</div>
+          <div className="price">€{product.priceEuro.toFixed(2)}</div>
           <button
             className={inCart ? 'btn btn--ok' : 'btn btn--primary'}
             onClick={onToggleCart}
