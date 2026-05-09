@@ -510,3 +510,149 @@
     grid-template-columns: 1fr;
   }
 }
+/* ============== AUTH MODAL ============== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 150ms ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-card {
+  position: relative;
+  background: #fff;
+  color: #1a1a1a;
+  border-radius: 12px;
+  padding: 32px;
+  width: min(420px, 92vw);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background 120ms;
+}
+.modal-close:hover { background: #f0f0f0; }
+
+.modal-title {
+  margin: 0 0 24px 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+}
+.modal-label input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 120ms;
+}
+.modal-label input:focus { border-color: #ff6b35; }
+
+.modal-error {
+  background: #fee;
+  color: #c00;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.modal-submit {
+  margin-top: 4px;
+  padding: 12px;
+  background: #ff6b35;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms;
+}
+.modal-submit:hover:not(:disabled) { background: #e85d2e; }
+.modal-submit:disabled { background: #ccc; cursor: not-allowed; }
+
+.modal-hint {
+  margin-top: 20px;
+  padding: 12px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ============== HEADER USER AREA ============== */
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 16px;
+}
+
+.header-user-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.header-user-role {
+  background: #ff6b35;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.header-login-btn,
+.header-logout-btn {
+  background: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 120ms;
+}
+.header-login-btn:hover,
+.header-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
