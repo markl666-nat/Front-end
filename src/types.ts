@@ -66,3 +66,6 @@ export type LoginResponse = {
 };
 
 export type UserRole = 'User' | 'Manager' | 'Admin';
+// ============ GENDER (для регистрации) ============
+// Совпадает с enum GenderTypes на бэке (BattleCats.Domains.Enums).
+export type GenderTypes = 0 | 1 | 2 | 3;   // NotSpecified | Male | Female | Other
