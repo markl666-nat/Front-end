@@ -916,10 +916,12 @@
 .catalog-page-header h1 {
   font-size: 36px;
   margin: 0 0 8px 0;
+  color: #1a1a1a;          /* тёмный, чёткий */
 }
 .catalog-page-header p {
-  color: #889;
+  color: #555;             /* был #889 — слишком светлый, поднял до #555 */
   font-size: 16px;
+  font-weight: 500;
 }
 .product-details {
   max-width: 1100px;
@@ -1169,35 +1171,67 @@
 }
 /* ============== 404 ============== */
 .not-found {
-  min-height: 60vh;
+  min-height: 70vh;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center; padding: 40px 20px;
+  position: relative;
 }
 .not-found-video {
   width: 320px;
   max-width: 80%;
   border-radius: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   background: #000;
+}
+/* Контейнер с текстом — белый фон с тенью, чтобы текст был читаемый
+   независимо от фона страницы */
+.not-found h1 {
+  font-size: 36px;
+  margin: 0 0 12px 0;
+  color: #1a1a1a;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 12px 28px;
+  border-radius: 12px;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.not-found p {
+  color: #1a1a1a;
+  margin: 8px 0;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 6px 16px;
+  border-radius: 8px;
+  display: inline-block;
+}
+.not-found-hint {
+  font-style: italic;
+  color: #555 !important;
+}
+.not-found-links {
+  display: flex; gap: 12px; margin-top: 24px;
 }
 .not-found-btn {
   padding: 12px 24px;
-  border: 1px solid #ccc;
+  border: 2px solid #fff;
   border-radius: 8px;
   text-decoration: none;
-  color: #333;
+  color: #fff;
   font-weight: 600;
   transition: all 120ms;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
 }
-.not-found-btn:hover { border-color: #ff6b35; color: #ff6b35; }
-.not-found-btn.primary {
-  background: #ff6b35;
-  color: #fff;
+.not-found-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
   border-color: #ff6b35;
 }
-.not-found-btn.primary:hover { background: #e85d2e; color: #fff; }
+.not-found-btn.primary {
+  background: #ff6b35;
+  border-color: #ff6b35;
+}
+.not-found-btn.primary:hover { background: #e85d2e; border-color: #e85d2e; }
 /* ============== HEADER VISIBILITY FIX ============== */
 /* Тёмный градиент Header — нужно сделать все ссылки и бренд белыми */
 
