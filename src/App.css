@@ -1102,3 +1102,98 @@
   border-top: 2px solid #333;
   font-size: 18px;
 }
+/* ============== PROFILE ============== */
+.profile-page { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+.profile-page h1 { font-size: 32px; margin: 0 0 24px 0; }
+.profile-tabs {
+  display: flex; gap: 4px; margin-bottom: 24px;
+  border-bottom: 2px solid #eee;
+}
+.profile-tab {
+  padding: 12px 24px;
+  background: none; border: none;
+  font-size: 15px; font-weight: 500;
+  color: #666; cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 120ms;
+}
+.profile-tab.active {
+  color: #ff6b35;
+  border-bottom-color: #ff6b35;
+}
+.profile-info {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+.profile-row {
+  display: flex; justify-content: space-between;
+  padding: 12px 0; border-bottom: 1px solid #f0f0f0;
+}
+.profile-row:last-child { border: none; }
+.profile-row span { color: #889; }
+.profile-orders { display: flex; flex-direction: column; gap: 12px; }
+.orders-empty { text-align: center; padding: 40px; color: #889; }
+.orders-empty a { color: #ff6b35; font-weight: 600; }
+.order-card {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+.order-header {
+  display: flex; justify-content: space-between;
+  font-size: 14px; color: #666;
+  margin-bottom: 12px;
+}
+.order-items {
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 12px 0;
+  margin-bottom: 12px;
+}
+.order-item-row {
+  display: flex; justify-content: space-between;
+  padding: 4px 0; font-size: 14px;
+}
+.order-meta {
+  display: flex; gap: 16px;
+  font-size: 13px; color: #889;
+  margin-bottom: 12px;
+}
+.order-total {
+  font-size: 18px;
+  text-align: right;
+}
+/* ============== 404 ============== */
+.not-found {
+  min-height: 60vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 40px 20px;
+}
+.not-found-emoji { font-size: 80px; margin-bottom: 16px; }
+.not-found h1 { font-size: 36px; margin: 0 0 12px 0; }
+.not-found p { color: #889; margin: 4px 0; }
+.not-found-hint { font-style: italic; }
+.not-found-links {
+  display: flex; gap: 12px; margin-top: 32px;
+}
+.not-found-btn {
+  padding: 12px 24px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: all 120ms;
+}
+.not-found-btn:hover { border-color: #ff6b35; color: #ff6b35; }
+.not-found-btn.primary {
+  background: #ff6b35;
+  color: #fff;
+  border-color: #ff6b35;
+}
+.not-found-btn.primary:hover { background: #e85d2e; color: #fff; }
