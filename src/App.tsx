@@ -12,6 +12,7 @@ import { HeroSection } from './sections/HeroSection';
 import { CatalogSection } from './sections/CatalogSection';
 import { FavoritesSection } from './sections/FavoritesSection';
 import { AboutSection } from './sections/AboutSection';
+import { AdminSection } from './sections/AdminSection';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<'All' | ProductCategory>('All');
@@ -129,6 +130,7 @@ const allProducts = useMemo(
         <FavoritesSection favorites={favorites} onToggleLike={toggleLike} />
 
         <AboutSection />
+        <AdminSection />
       </main>
 
       <Footer />
