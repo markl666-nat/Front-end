@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
 import { LoginModal } from './LoginModal';
 import { RegisterModal } from './RegisterModal';
 
@@ -17,6 +18,7 @@ export function Header() {
   const [loginOpen, setLoginOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
   const navigate = useNavigate();
+  const { totalItems } = useCart();
 
   const handleLogout = () => {
     logout();
@@ -35,7 +37,10 @@ export function Header() {
           <nav className="nav">
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/catalog" className="nav-link">Catalog</Link>
-            <Link to="/cart" className="nav-link">🛒 Cart</Link>
+            <Link to="/cart" className="nav-link cart-link">
+  🛒 Cart
+  {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
+</Link>
             {isAuthenticated && (
               <Link to="/profile" className="nav-link">Profile</Link>
             )}
