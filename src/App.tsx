@@ -3,7 +3,7 @@ import './App.css';
 
 import { products } from './data/products';
 import type { Product, ProductCategory } from './types.ts';
-import { fetchFakeStoreProducts } from './api/fakeStore.ts';
+import { fetchBattleItems } from './api/battleCatsApi';
 
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -30,8 +30,8 @@ export default function App() {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchFakeStoreProducts(controller.signal);
-        setApiProducts(data);
+       const data = await fetchBattleItems(controller.signal);
+    setApiProducts(data);
       } catch (e) {
         if (e instanceof DOMException && e.name === 'AbortError') return;
         const msg = e instanceof Error ? e.message : 'Network error';
