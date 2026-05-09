@@ -38,6 +38,18 @@ export function Header({
             <button onClick={onGoToFavorites} className="nav-link">
               Favorites ({likedCount})
             </button>
+            {(userRole === 'Admin' || userRole === 'Manager') && (
+              <button
+                onClick={() => {
+                  document
+                    .getElementById('admin')
+                    ?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="nav-link"
+              >
+                Admin 🛠
+              </button>
+            )}
             <button onClick={onGoToAbout} className="nav-link">
               About
             </button>
