@@ -26,38 +26,43 @@
   padding: 14px 0;
 }
 
+/* ============== БРЕНД "Ponos.official" ============== */
+
 .brand {
   display: flex;
-  gap: 12px;
   align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 200ms ease-out;
 }
 
-.brand__logo {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #f9a8d4, #a5b4fc);
-  box-shadow: 0 10px 22px rgba(148, 163, 184, 0.35);
-  font-size: 18px;
+.brand:hover {
+  transform: scale(1.03);   /* лёгкое увеличение при наведении */
 }
 
-.brand__logoImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 14px;
+.brand-mark {
+  font-size: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));   /* тень у эмодзи */
 }
 
-.brand__title {
+.brand-text {
+  font-family: var(--font-heading);
   font-weight: 800;
-  letter-spacing: 0.2px;
+  font-size: 22px;
+  letter-spacing: -0.03em;   /* буквы плотнее */
+  color: #fff;
+  /* Подчёркивание ".official" оранжевым через ::before / ::after — нет.
+     Вместо этого через JSX вынесем точку отдельно (в шаге F61.4 ниже). */
 }
 
-.brand__subtitle {
-  font-size: 12px;
-  opacity: 0.75;
+.brand-text-dot {
+  color: var(--color-accent);   /* точка оранжевая */
+}
+
+.brand-text-suffix {
+  font-weight: 500;             /* "official" тоньше чем "Ponos" */
+  opacity: 0.85;
 }
 
 .nav {

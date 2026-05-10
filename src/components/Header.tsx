@@ -29,10 +29,12 @@ export function Header() {
     <>
       <header className="header">
         <div className="header-inner">
-          <Link to="/" className="brand">
-            <span className="brand-mark">🐾</span>
-            <span className="brand-text">Cat Base Shop</span>
-          </Link>
+         <Link to="/" className="brand">
+  <span className="brand-mark">🐾</span>
+  <span className="brand-text">
+    Ponos<span className="brand-text-dot">.</span><span className="brand-text-suffix">official</span>
+  </span>
+</Link>
 
           <nav className="nav">
             <Link to="/" className="nav-link">Home</Link>

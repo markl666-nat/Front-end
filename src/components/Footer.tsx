@@ -3,7 +3,9 @@ export function Footer() {
     <footer className="footer">
       <div className="container footer__row">
         <div>
-          <div className="footer__title">Cat Base Shop</div>
+          <div className="footer__title">
+  Ponos<span className="brand-text-dot">.</span><span className="brand-text-suffix">official</span>
+</div>
           <div className="footer__text">
             Demo catalog inspired by The Battle Cats.
           </div>

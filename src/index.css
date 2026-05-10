@@ -1,30 +1,67 @@
 :root {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  /* Шрифты */
+  --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Цвета (можно использовать в любом CSS через var(--color-accent)) */
+  --color-accent: #ff6b35;
+  --color-accent-dark: #e85d2e;
+  --color-text: #1a1a1a;
+  --color-text-muted: #555;
+  --color-bg: #f7f7fb;
+
+  /* Типографика */
+  font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
-  color: #0b1220;
-  background: #070a12;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   margin: 0;
   min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
 }
 
+/* Заголовки получают красивый Outfit */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;   /* немного сжимаем буквы у заголовков — выглядит премиально */
+  margin: 0;
+}
+
+h1 { font-weight: 800; }     /* самые крупные заголовки — самые жирные */
+
+/* Кнопки тоже получают Outfit — выглядят чётче */
+button {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+/* Поля ввода — body-шрифт для читабельности */
+input, textarea, select {
+  font-family: var(--font-body);
+}
+
+/* Ссылки */
 a {
   color: inherit;
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-accent);
 }
