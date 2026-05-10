@@ -972,6 +972,53 @@
   line-height: 1.6;
   margin-bottom: 20px;
 }
+/* ============== PRODUCT STATS ============== */
+.product-stats {
+  margin: 24px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  color: #fff;
+}
+.product-stats-title {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+.stat-row {
+  display: grid;
+  grid-template-columns: 100px 60px 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.stat-row:last-child { margin-bottom: 0; }
+.stat-label {
+  font-size: 13px;
+  opacity: 0.85;
+}
+.stat-value {
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+}
+.stat-bar {
+  height: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 300ms ease-out;
+}
+.add-to-cart-btn.in-cart {
+  background: #28a745;
+}
+.add-to-cart-btn.in-cart:hover { background: #218838; }
 .product-price {
   font-size: 32px;
   font-weight: 700;
@@ -1329,4 +1376,54 @@ header.header {
 .cardProduct:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+/* ============== ADMIN TABS ============== */
+.admin-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+.admin-tab {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  color: #aab;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 120ms;
+}
+.admin-tab:hover { color: #fff; }
+.admin-tab.active {
+  color: #ff6b35;
+  border-bottom-color: #ff6b35;
+}
+
+/* ============== ROLE TAGS ============== */
+.role-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.role-admin { background: #c0392b; color: #fff; }
+.role-manager { background: #d68910; color: #fff; }
+.role-user { background: #2874a6; color: #fff; }
+
+.me-pill {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  background: #ff6b35;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
 }
