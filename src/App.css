@@ -1313,3 +1313,20 @@ header.header {
   margin-left: 6px;
   box-shadow: 0 0 0 2px rgba(0,0,0,0.15);
 }
+/* ============== PRODUCT CARD LINK ============== */
+.cardProduct__link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+.cardProduct__link:hover .cardProduct__title {
+  color: #ff6b35;   /* подсветка названия при наведении */
+}
+.cardProduct {
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+.cardProduct:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
